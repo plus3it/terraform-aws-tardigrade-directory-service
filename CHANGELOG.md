@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### 1.0.0
 
+**Released**: 2019.09.23
+
+**Commit Delta**: [Change from 1.0.0 release](https://github.com/plus3it/terraform-aws-tardigrade-directory-service/compare/1.0.0...1.0.1)
+
+**Summary**:
+
+*   Fix typo in Makefile
+
+### 1.0.0
+
 **Released**: 2019.09.11
 
 **Commit Delta**: [Change from 0.0.0 release](https://github.com/plus3it/terraform-aws-tardigrade-directory-service/compare/0.0.0...1.0.0)
