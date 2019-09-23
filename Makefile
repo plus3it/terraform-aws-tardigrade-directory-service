@@ -119,7 +119,7 @@ docs/generate: | guard/program/terraform-docs tfdocs-awk/install
 	@ echo "[$@]: Documentation files creation complete!"
 
 terratest/install: | guard/program/go
-	cd tests && go mod init terraform-aws-tardigrade-vpc-flow-log/tests
+	cd tests && go mod init terraform-aws-tardigrade-directory-service/tests
 	cd tests && go build ./...
 	cd tests && go mod tidy
 
