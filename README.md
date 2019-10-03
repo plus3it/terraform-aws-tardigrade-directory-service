@@ -8,7 +8,7 @@ Terraform module to create a directory
 |------|-------------|:----:|:-----:|:-----:|
 | alias | The alias for the directory, unique amongst all aliases in AWS (required for enable_sso) | string | `"null"` | no |
 | connect\_settings | Connector related information about the directory (required for ADConnector) | list(string) | `<list>` | no |
-| create\_directory\_service | Controls whether to create the directory service | string | `"true"` | no |
+| create\_directory\_service | Controls whether to create the directory service | bool | `"true"` | no |
 | description | A textual description for the directory | string | `"null"` | no |
 | enable\_sso | Whether to enable single-sign on for the directory (requires alias) | string | `"false"` | no |
 | name | The fully qualified name for the directory, such as corp.example.com | string | n/a | yes |
