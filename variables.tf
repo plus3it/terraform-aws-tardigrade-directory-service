@@ -1,5 +1,6 @@
 variable "create_directory_service" {
   description = "Controls whether to create the directory service"
+  type        = bool
   default     = true
 }
 
