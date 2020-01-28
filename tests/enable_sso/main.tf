@@ -20,7 +20,7 @@ resource "random_string" "alias" {
 resource "random_string" "domain" {
   length  = 10
   upper   = false
-  number = false
+  number  = false
   special = false
 }
 
