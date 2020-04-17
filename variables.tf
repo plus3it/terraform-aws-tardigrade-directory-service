@@ -15,8 +15,9 @@ variable "password" {
 }
 
 variable "size" {
-  description = "The size of the directory (Small or Large)"
+  description = "(Required for SimpleAD and ADConnector) The size of the directory (Small or Large)"
   type        = string
+  default     = null
 }
 
 variable "vpc_id" {
@@ -62,6 +63,12 @@ variable "type" {
   description = "Either SimpleAD, ADConnector or MicrosoftAD"
   type        = string
   default     = "SimpleAD"
+}
+
+variable "edition" {
+  description = "(Required for the MicrosoftAD type only) The MicrosoftAD edition (Standard or Enterprise)."
+  type        = string
+  default     = null
 }
 
 variable "tags" {

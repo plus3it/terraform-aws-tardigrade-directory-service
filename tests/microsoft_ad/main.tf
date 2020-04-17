@@ -24,13 +24,13 @@ module "vpc" {
     aws = aws
   }
 
-  name            = "tardigrade-director-service-testing"
+  name            = "tardigrade-directory-service-testing"
   cidr            = "10.0.0.0/16"
   azs             = ["us-east-1a", "us-east-1b"]
   private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
 }
 
-module "baseline" {
+module "microsoft_ad_enterprise" {
   source = "../../"
   providers = {
     aws = aws
@@ -39,7 +39,8 @@ module "baseline" {
   create_directory_service = true
   name                     = "corp.${random_string.domain.result}.com"
   password                 = random_string.password.result
-  size                     = "Small"
+  type                     = "MicrosoftAD"
+  edition                  = "Standard"
   subnet_ids               = module.vpc.private_subnets
   vpc_id                   = module.vpc.vpc_id
 }
