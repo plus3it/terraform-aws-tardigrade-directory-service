@@ -12,6 +12,7 @@ resource "aws_directory_service_directory" "this" {
   alias       = var.alias
   description = var.description
   enable_sso  = var.enable_sso
+  edition     = var.edition
 
   vpc_settings {
     vpc_id     = var.vpc_id
