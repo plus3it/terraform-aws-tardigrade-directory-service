@@ -36,7 +36,6 @@ module "microsoft_ad_enterprise" {
     aws = aws
   }
 
-  create_directory_service = true
   name                     = "corp.${random_string.domain.result}.com"
   password                 = random_string.password.result
   type                     = "MicrosoftAD"

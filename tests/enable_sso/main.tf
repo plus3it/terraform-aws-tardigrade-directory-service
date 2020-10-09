@@ -43,7 +43,6 @@ module "enable_sso" {
     aws = aws
   }
 
-  create_directory_service = true
   name                     = "corp.${random_string.domain.result}.com"
   alias                    = random_string.alias.result
   short_name               = "CORP"

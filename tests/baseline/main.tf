@@ -36,7 +36,6 @@ module "baseline" {
     aws = aws
   }
 
-  create_directory_service = true
   name                     = "corp.${random_string.domain.result}.com"
   password                 = random_string.password.result
   size                     = "Small"

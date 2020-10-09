@@ -1,9 +1,3 @@
-variable "create_directory_service" {
-  description = "Controls whether to create the directory service"
-  type        = bool
-  default     = true
-}
-
 variable "name" {
   description = "The fully qualified name for the directory, such as corp.example.com"
   type        = string

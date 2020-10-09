@@ -1,8 +1,4 @@
-provider "aws" {
-}
-
 resource "aws_directory_service_directory" "this" {
-  count = var.create_directory_service ? 1 : 0
 
   name        = var.name
   short_name  = var.short_name
