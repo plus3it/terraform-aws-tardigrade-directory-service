@@ -1,8 +1,4 @@
-provider "aws" {
-}
-
-resource "aws_directory_service_directory" "this" {
-  count = var.create_directory_service ? 1 : 0
+resource aws_directory_service_directory this {
 
   name        = var.name
   short_name  = var.short_name
@@ -19,7 +15,7 @@ resource "aws_directory_service_directory" "this" {
     subnet_ids = var.subnet_ids
   }
 
-  dynamic "connect_settings" {
+  dynamic connect_settings {
     for_each = var.connect_settings
     content {
       customer_dns_ips  = connect_settings.value.customer_dns_ips

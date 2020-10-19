@@ -26,7 +26,6 @@ Terraform module to create a directory
 | vpc\_id | The identifier of the VPC that the directory is in | `string` | n/a | yes |
 | alias | The alias for the directory, unique amongst all aliases in AWS (required for enable\_sso) | `string` | `null` | no |
 | connect\_settings | Connector related information about the directory (required for ADConnector) | `list(string)` | `[]` | no |
-| create\_directory\_service | Controls whether to create the directory service | `bool` | `true` | no |
 | description | A textual description for the directory | `string` | `null` | no |
 | edition | (Required for the MicrosoftAD type only) The MicrosoftAD edition (Standard or Enterprise). | `string` | `null` | no |
 | enable\_sso | Whether to enable single-sign on for the directory (requires alias) | `bool` | `false` | no |
