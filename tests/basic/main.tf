@@ -18,13 +18,9 @@ resource "random_string" "domain" {
 }
 
 module "vpc" {
-  source = "github.com/terraform-aws-modules/terraform-aws-vpc?ref=v2.15.0"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=v2.77.0"
 
-  providers = {
-    aws = aws
-  }
-
-  name            = "tardigrade-director-service-testing"
+  name            = "tardigrade-test-directory-service-${random_string.domain.result}"
   cidr            = "10.0.0.0/16"
   azs             = ["us-east-1a", "us-east-1b"]
   private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
@@ -32,13 +28,13 @@ module "vpc" {
 
 module "directory_service" {
   source = "../../"
-  providers = {
-    aws = aws
-  }
 
   name       = "corp.${random_string.domain.result}.com"
   password   = random_string.password.result
   size       = "Small"
   subnet_ids = module.vpc.private_subnets
-  vpc_id     = module.vpc.vpc_id
+
+  tags = {
+    Name = "tardigrade-test-directory-service-${random_string.domain.result}"
+  }
 }
