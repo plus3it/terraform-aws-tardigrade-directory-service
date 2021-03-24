@@ -14,20 +14,20 @@ variable "size" {
   default     = null
 }
 
-variable "vpc_id" {
-  description = "The identifier of the VPC that the directory is in"
-  type        = string
-}
-
 variable "subnet_ids" {
-  description = "The identifiers of the subnets for the directory servers (2 subnets in 2 different AZs)"
+  description = "Subnet IDs for the directory servers/connectors (2 subnets in 2 different AZs)"
   type        = list(string)
 }
 
 variable "connect_settings" {
   description = "Connector related information about the directory (required for ADConnector)"
-  type        = list(string)
-  default     = []
+  type = object({
+    # The username corresponding to the password provided.
+    customer_username = string
+    # The DNS IP addresses of the domain to connect to.
+    customer_dns_ips = list(string)
+  })
+  default = null
 }
 
 variable "alias" {
@@ -57,12 +57,22 @@ variable "type" {
   description = "Either SimpleAD, ADConnector or MicrosoftAD"
   type        = string
   default     = "SimpleAD"
+
+  validation {
+    condition     = contains(["SimpleAD", "ADConnector", "MicrosoftAD"], var.type)
+    error_message = "`type` must be one of: \"SimpleAD\", \"ADConnector\", \"MicrosoftAD\"."
+  }
 }
 
 variable "edition" {
   description = "(Required for the MicrosoftAD type only) The MicrosoftAD edition (Standard or Enterprise)."
   type        = string
   default     = null
+
+  validation {
+    condition     = var.edition != null ? contains(["Standard", "Enterprise"], var.edition) : true
+    error_message = "`type` must be one of: \"Standard\", \"Enterprise\"."
+  }
 }
 
 variable "tags" {

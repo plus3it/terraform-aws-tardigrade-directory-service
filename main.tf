@@ -1,5 +1,4 @@
 resource "aws_directory_service_directory" "this" {
-
   name        = var.name
   short_name  = var.short_name
   password    = var.password
@@ -9,22 +8,27 @@ resource "aws_directory_service_directory" "this" {
   description = var.description
   enable_sso  = var.enable_sso
   edition     = var.edition
+  tags        = var.tags
 
-  vpc_settings {
-    vpc_id     = var.vpc_id
-    subnet_ids = var.subnet_ids
-  }
-
-  dynamic "connect_settings" {
-    for_each = var.connect_settings
+  dynamic "vpc_settings" {
+    for_each = var.type != "ADConnector" ? ["1"] : []
     content {
-      customer_dns_ips  = connect_settings.value.customer_dns_ips
-      customer_username = connect_settings.value.customer_username
-      subnet_ids        = connect_settings.value.subnet_ids
-      vpc_id            = connect_settings.value.vpc_id
+      subnet_ids = var.subnet_ids
+      vpc_id     = data.aws_subnet.this.vpc_id
     }
   }
 
-  tags = var.tags
+  dynamic "connect_settings" {
+    for_each = var.type == "ADConnector" ? [var.connect_settings] : []
+    content {
+      customer_dns_ips  = connect_settings.value.customer_dns_ips
+      customer_username = connect_settings.value.customer_username
+      subnet_ids        = var.subnet_ids
+      vpc_id            = data.aws_subnet.this.vpc_id
+    }
+  }
 }
 
+data "aws_subnet" "this" {
+  id = var.subnet_ids[0]
+}
