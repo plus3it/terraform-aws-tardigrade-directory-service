@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### 2.1.0
+
+**Released**: 2021.03.24
+
+**Commit Delta**: [Change from 2.0.0 release](https://github.com/plus3it/terraform-aws-tardigrade-directory-service/compare/2.0.0...2.1.0)
+
+**Summary**:
+
+*   Enables support for AD Connector.
+
+### 2.0.0
+
+**Released**: 2020.10.19
+
+**Commit Delta**: [Change from 1.1.0 release](https://github.com/plus3it/terraform-aws-tardigrade-directory-service/compare/1.1.0...2.0.0)
+
+**Summary**:
+
+*   Removes module-wide "create" variable. Use module-level for_each with Terraform
+    0.13 to disable the module.
+
 ### 1.1.0
 
 **Released**: 2020.04.17

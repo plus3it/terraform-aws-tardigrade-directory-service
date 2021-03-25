@@ -22,10 +22,9 @@ Terraform module to create a directory
 |------|-------------|------|---------|:--------:|
 | name | The fully qualified name for the directory, such as corp.example.com | `string` | n/a | yes |
 | password | The password for the directory administrator or connector user | `string` | n/a | yes |
-| subnet\_ids | The identifiers of the subnets for the directory servers (2 subnets in 2 different AZs) | `list(string)` | n/a | yes |
-| vpc\_id | The identifier of the VPC that the directory is in | `string` | n/a | yes |
+| subnet\_ids | Subnet IDs for the directory servers/connectors (2 subnets in 2 different AZs) | `list(string)` | n/a | yes |
 | alias | The alias for the directory, unique amongst all aliases in AWS (required for enable\_sso) | `string` | `null` | no |
-| connect\_settings | Connector related information about the directory (required for ADConnector) | `list(string)` | `[]` | no |
+| connect\_settings | Connector related information about the directory (required for ADConnector) | <pre>object({<br>    # The username corresponding to the password provided.<br>    customer_username = string<br>    # The DNS IP addresses of the domain to connect to.<br>    customer_dns_ips = list(string)<br>  })</pre> | `null` | no |
 | description | A textual description for the directory | `string` | `null` | no |
 | edition | (Required for the MicrosoftAD type only) The MicrosoftAD edition (Standard or Enterprise). | `string` | `null` | no |
 | enable\_sso | Whether to enable single-sign on for the directory (requires alias) | `bool` | `false` | no |
