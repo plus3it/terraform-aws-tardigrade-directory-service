@@ -4,7 +4,7 @@ language: minimal
 
 stages:
   - lint
-  - tests
+  - test
   - deploy
 
 if: branch = master OR type = pull_request
