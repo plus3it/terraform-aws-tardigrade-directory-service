@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "us-east-1"
-}
-
 resource "random_string" "password" {
   length      = 10
   min_upper   = 1
@@ -18,7 +14,7 @@ resource "random_string" "domain" {
 }
 
 module "vpc" {
-  source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=v2.77.0"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=v3.7.0"
 
   name            = "tardigrade-test-directory-service-${random_string.domain.result}"
   cidr            = "10.0.0.0/16"

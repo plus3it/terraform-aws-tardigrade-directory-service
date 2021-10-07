@@ -5,13 +5,13 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
-- package-ecosystem: pip
-  directory: "/"
+- package-ecosystem: terraform
+  directory: "/tests/ad_connector"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
-- package-ecosystem: gomod
-  directory: "/tests"
+- package-ecosystem: terraform
+  directory: "/tests/basic"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
@@ -21,12 +21,7 @@ updates:
     interval: daily
   open-pull-requests-limit: 10
 - package-ecosystem: terraform
-  directory: "/tests/no_create"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-- package-ecosystem: terraform
-  directory: "/tests/baseline"
+  directory: "/tests/microsoft_ad"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
