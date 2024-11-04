@@ -33,7 +33,7 @@ module "directory_service" {
 
 module "vpc" {
 
-  source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=v5.9.0"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=v5.15.0"
 
   name            = "tardigrade-test-directory-service-${random_string.domain.result}"
   cidr            = "10.0.0.0/16"
